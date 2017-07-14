@@ -15,5 +15,7 @@
     <%= label_tag(:time, 'Train Schedule After') %>
     <%= time_select(:time, value: Time.now) %>
   </div>
-  <%= submit_tag('Search') %>
+  <%= submit_tag('Find', class: 'btn btn-primary') %>
 <% end %>
+
+<%= render 'stops/result' %>
