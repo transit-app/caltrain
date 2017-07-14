@@ -1,0 +1,19 @@
+<% require 'date' %>
+
+<h1>Caltrain</h1>
+
+<%= form_tag(controller: 'stations', action: 'index', method: 'get') do %>
+  <div class="form-group">
+    <%= label_tag(:from, 'From') %>
+    <%= select_tag(:name, options_for_select(@stations.collect{ |s| [s.name] }), class: "form-control") %>
+  </div>
+  <div class="form-group">
+    <%= label_tag(:to, 'To') %>
+    <%= select_tag(:name, options_for_select(@stations.collect{ |s| [s.name] }), class: "form-control") %>
+  </div>
+  <div class="form-group">
+    <%= label_tag(:time, 'Train Schedule After') %>
+    <%= time_select(:time, value: Time.now) %>
+  </div>
+  <%= submit_tag('Search') %>
+<% end %>
