@@ -2,4 +2,4 @@
 // # All this logic will automatically be available in application.js.
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
-  $("#search-btn").append(`<%= link_to 'Search', stops_path(from: '${#from.val()}', to: '${#to.val()}'), class: 'btn btn-lg btn-primary' %>`);
+  // $("#search-btn").append(`<%= link_to 'Search', stops_path(from: '${$("#from.val")}', to: '${#to.val()}', time: '14:44'), class: 'btn btn-lg btn-primary' %>`);

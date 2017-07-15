@@ -6,13 +6,14 @@ class StopsController < ApplicationController
     departure_stop = Station.where(name: params[:from]).first
     arrival_stop = Station.where(name: params[:to]).first
 
+    time_criteria = params[:time]['time(4i)'] + ":" + params[:time]['time(5i)']
+
     @trips = []
     departure_stop.trains.each do |train|
-
-      # departure_stop_confirm = train.stops.where(station: departure_stop).where("departure_time >= '5:00 PM'").first
+      departure_stop_confirm = train.stops.where(station: departure_stop).where("departure_time >= '#{time_criteria}'").first
       arrival_stop_confirm = train.stops.where(station: arrival_stop).first
       # pp arrival_stop_temp
-      if arrival_stop_confirm
+      if arrival_stop_confirm && departure_stop_confirm
         stops = train.stops.where(station: departure_stop).first, arrival_stop_confirm, train
         @trips << stops.as_json
         # pp stops
