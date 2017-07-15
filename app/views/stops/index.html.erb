@@ -1,1 +1,6 @@
-<h1>This is stops#index.</h1>
+<h3>You'll see the search result here.</h3>
+<ol>
+<% for i in 0..@trips.count-1 %>
+  <li><%= "train number #{@trips[i][2]["train_number"]}: departing #{@trips[i][0]["departure_time"].to_datetime.strftime("%l:%M %p")}, arriving #{@trips[i][1]["departure_time"].to_datetime.strftime("%l:%M %p")}" %></li>
+<% end %>
+</ol>

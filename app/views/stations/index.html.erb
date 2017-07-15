@@ -2,20 +2,20 @@
 
 <h1>Caltrain</h1>
 
-<%= form_tag(controller: 'stations', action: 'index', method: 'get') do %>
+<%= form_tag(controller: 'stations', method: 'get', action: 'index') do %>
   <div class="form-group">
     <%= label_tag(:from, 'From') %>
-    <%= select_tag(:name, options_for_select(@stations.collect{ |s| [s.name] }), class: "form-control") %>
+    <%= select_tag(:from, options_for_select(@stations.collect{ |s| [s.name] }), class: "form-control", :selected => params[:value]) %>
   </div>
   <div class="form-group">
     <%= label_tag(:to, 'To') %>
-    <%= select_tag(:name, options_for_select(@stations.collect{ |s| [s.name] }), class: "form-control") %>
+    <%= select_tag(:to, options_for_select(@stations.collect{ |s| [s.name] }), class: "form-control") %>
   </div>
   <div class="form-group">
     <%= label_tag(:time, 'Train Schedule After') %>
     <%= time_select(:time, value: Time.now) %>
   </div>
-  <%= submit_tag('Find', class: 'btn btn-primary') %>
-<% end %>
 
-<%= render 'stops/result' %>
+  <input type='submit' id='search-btn'>
+
+<% end %>
