@@ -22,5 +22,6 @@ class StopsController < ApplicationController
         @trips << stops.as_json
       end
     end
+
   end
 end
