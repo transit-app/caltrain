@@ -1,6 +1,6 @@
 <% require 'date' %>
 
-<%= form_tag(controller: 'stations', method: 'get', action: 'index') do %>
+<%= form_tag('/stops', controller: 'stations', method: 'get', action: 'index') do %>
 
   <div class="input-field col s12">
     <%= select_tag(:from, options_for_select( @stations.collect{ |s| [s.name] } )) %>
