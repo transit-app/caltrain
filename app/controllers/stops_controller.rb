@@ -1,8 +1,6 @@
 class StopsController < ApplicationController
-  def index
-    @stations = Station.all
-    @stops = Stop.all # we have to CHANGE THIS.
-
+  
+  def show
     departure_stop = Station.where(name: params[:from]).first
     arrival_stop = Station.where(name: params[:to]).first
 
@@ -20,7 +18,6 @@ class StopsController < ApplicationController
         @trips << stops.as_json
       end
     end
-
 
   end
 end
