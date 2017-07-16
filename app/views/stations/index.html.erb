@@ -19,7 +19,7 @@
   <%= text_field_tag 'time', Time.now.strftime('%I:%M%p'), class: "timepicker" %>
 
   <div class="range-field">
-    <%= label_tag(:range, 'Departing Within Next (hours)') %>
+    <%= label_tag(:range, 'Departing Within Next (default 2 hours)') %>
     <%= range_field_tag(:range, 2, in: 1..12) %>
   </div>
 
