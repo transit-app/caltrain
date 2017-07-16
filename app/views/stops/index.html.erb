@@ -21,7 +21,9 @@
             <span class="card-title grey-text text-darken-4">Full Listing:<i class="material-icons right">close</i></span>
             <table>
               <% train_id = @trips[i][0]['train_id'] %>
-              <% Train.find(train_id).stops.reverse.each do |stop| %>
+              <% from_stop_id = @trips[i][0]['id'] %>
+              <% to_stop_id = @trips[i][1]['id'] %>
+              <% Train.find(train_id).stops.where("id >= #{from_stop_id} and id <= #{to_stop_id}").each do |stop| %>
                 <tr>
                   <td><%= Station.find(stop.station_id).name %></td>
                   <td><%= stop.departure_time.to_datetime.utc.strftime("%l:%M %p") %></td>
