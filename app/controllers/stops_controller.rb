@@ -6,6 +6,8 @@ class StopsController < ApplicationController
     departure_stop = Station.where(name: params[:from]).first
     arrival_stop = Station.where(name: params[:to]).first
 
+    # TODO: params[:time] is now a simple string, NOT a complex 4i, 5i, etc hash.
+    # So, change time_criteria to params[:time] and make other necessary changes. Thanks!
     time_criteria = params[:time]['time(4i)'] + ":" + params[:time]['time(5i)']
 
     @trips = []
