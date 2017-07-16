@@ -10,12 +10,17 @@
         <div class="card blue-grey darken-1">
           <div class="card-content white-text">
             <span class="card-title activator">Train #<%= @trips[i][2]["train_number"] %><i class="material-icons right">more_vert</i></span></span>
-            <p>Departure : <%= @trips[i][0]["departure_time"].to_datetime.strftime("%l:%M %p") %></p>
-            <p>Arrival : <%= @trips[i][1]["departure_time"].to_datetime.strftime("%l:%M %p") %></p>
+            <p>Departure : <%= @trips[i][0]["departure_time"].to_datetime.utc.strftime("%l:%M %p") %></p>
+            <p>Arrival : <%= @trips[i][1]["departure_time"].utc.to_datetime.strftime("%l:%M %p") %></p>
           </div>
           <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">What should appear here?<i class="material-icons right">close</i></span>
-            <p>We can add the trips / trains full route here. :)</p>
+            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+            <ol>
+              <% train_id = @trips[i][0]['train_id'] %>
+              <% Train.find(train_id).stops.reverse.each do |stop| %>
+                <li><%= Station.find(stop.station_id).name %>: <%= Station.find(stop.station_id).departure_time %></li>
+              <% end %>
+            </ol>
           </div>
           <div class="card-action">
             <%= link_to "Should we delete this button?", stops_details_path(@trips[i][0]['id']) %>
