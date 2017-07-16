@@ -1,6 +1,6 @@
 class StopsController < ApplicationController
-  
-  def show
+
+  def index
     departure_stop = Station.where(name: params[:from]).first
     arrival_stop = Station.where(name: params[:to]).first
 
