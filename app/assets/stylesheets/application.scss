@@ -32,3 +32,16 @@ body {
 // .range-field span .value {
 //   display: none;
 // }
+
+div.card-content > p:first-child {
+  padding-top: 1em;
+}
+div.card-content > p {
+  padding-bottom: .5em;
+}
+td {
+  padding: 5px;
+}
+.orange-title {
+  color: #ffab40;
+}
