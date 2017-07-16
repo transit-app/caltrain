@@ -28,3 +28,15 @@ body {
   margin-top: 0;
   z-index: 10;
 }
+div.card-content > p:first-child {
+  padding-top: 1em;
+}
+div.card-content > p {
+  padding-bottom: .5em;
+}
+td {
+  padding: 5px;
+}
+.orange-title {
+  color: #ffab40;
+}
