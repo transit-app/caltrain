@@ -9,7 +9,7 @@ class StopsController < ApplicationController
     if time_before.to_time < time_after.to_time
       time_before = "11:59:59PM"
     end
-
+    
     @trips = []
     departure_stop.trains.each do |train|
       departure_stop_confirm = train.stops.where(station: departure_stop).where("departure_time >= '#{time_after}' and departure_time <= '#{time_before}'").first
@@ -22,6 +22,5 @@ class StopsController < ApplicationController
         @trips << stops.as_json
       end
     end
-
   end
 end
