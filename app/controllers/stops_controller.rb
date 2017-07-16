@@ -13,7 +13,6 @@ class StopsController < ApplicationController
 
     @trips = []
     departure_stop.trains.each do |train|
-      explode
       departure_stop_confirm = train.stops.where(station: departure_stop).where("departure_time >= '#{time_criteria}'").first
       arrival_stop_confirm = train.stops.where(station: arrival_stop).first
       # pp arrival_stop_temp
@@ -24,5 +23,8 @@ class StopsController < ApplicationController
       end
     end
 
+  end
+
+  def show
   end
 end
