@@ -5,7 +5,7 @@
 <%= form_tag(controller: 'stations', method: 'get', action: 'index') do %>
   <div class="form-group">
     <%= label_tag(:from, 'From') %>
-    <%= select_tag(:from, options_for_select(@stations.collect{ |s| [s.name] }), class: "form-control", :selected => params[:value]) %>
+    <%= select_tag(:from, options_for_select(@stations.collect{ |s| [s.name] }), class: "form-control") %>
   </div>
   <div class="form-group">
     <%= label_tag(:to, 'To') %>
@@ -13,9 +13,10 @@
   </div>
   <div class="form-group">
     <%= label_tag(:time, 'Train Schedule After') %>
-    <%= time_select(:time, value: Time.now) %>
+    <span id='span_time'>
+      <%= time_select 'time', 'time', {ampm: true}, {minute_step: 15} %>
+    </span>
   </div>
 
   <input type='submit' id='search-btn'>
-
 <% end %>
