@@ -4,7 +4,7 @@ class Station < ApplicationRecord
 
   def self.get_trips (departure_stop, arrival_stop, time, range)
     time_after = time
-    time_before = (time_after.to_time + (params[:range].to_i * 60 * 60)).to_time.strftime('%I:%M%p')
+    time_before = (time_after.to_time + (range.to_i * 60 * 60)).to_time.strftime('%I:%M%p')
       if time_before.to_time < time_after.to_time
         time_before = "11:59:59PM"
       end
