@@ -5,7 +5,10 @@ class StopsController < ApplicationController
     arrival_stop = Station.where(name: params[:to]).first
 
     time_after = params[:time]
-    time_before = (time_after.to_time + (params[:range].to_i * 60 * 60)).strftime('%I:%M%p')
+    time_before = (time_after.to_time + (params[:range].to_i * 60 * 60)).to_time.strftime('%I:%M%p')
+    if time_before.to_time < time_after.to_time
+      time_before = "11:59:59PM"
+    end
 
     @trips = []
     departure_stop.trains.each do |train|
