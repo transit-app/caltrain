@@ -15,4 +15,7 @@ Rails.application.routes.draw do
   get '/stops', to: 'stops#index', as: 'stops'
   post '/stations', to: 'stops#index'
   get '/stops/:id', to: 'stops#show', as:'stops_details'
+
+  get '/favorites', to: 'favorites#index'
+  post '/favorites', to: 'favorites#create'
 end
