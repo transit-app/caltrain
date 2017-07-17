@@ -26,11 +26,11 @@
       <% if signed_in? %>
       <ul id="nav-mobile" class="right">
         <li><%= current_user.email %></li>
-        <li><%= link_to 'Sign out', sign_out_path, method: :delete, class: 'btn waves-effect waves-light right' %></li>
+        <li><%= link_to 'Sign out', sign_out_path, method: :delete, class: 'btn-small waves-effect waves-light right' %></li>
       </ul>
       <% else %>
       <ul id="nav-mobile" class="right">
-        <li><%= link_to 'Sign up', sign_up_path, class: 'btn waves-effect waves-light right' %></li>
+        <li><%= link_to 'Sign up', sign_up_path, class: 'btn-small waves-effect waves-light right' %></li>
       </ul>
       <% end %>
     </div>
