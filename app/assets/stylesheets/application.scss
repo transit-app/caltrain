@@ -17,7 +17,7 @@ body {
   font-family: 'Zilla Slab', sans-serif;
 }
 .container {
-  padding-top: 70px;
+  padding-top: 100px;
 }
 .banner {
   color: #fff;
@@ -27,6 +27,13 @@ body {
   padding: 10px;
   margin-top: 0;
   z-index: 10;
+  height:70px;
+}
+.nav-wrapper {
+  color: #fff;
+  background-color: #000;
+  z-index: 10;
+  height:100px;
 }
 
 // .range-field span .value {
