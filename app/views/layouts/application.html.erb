@@ -11,11 +11,13 @@
   </head>
 
   <body>
-    <h4 class='banner'>Caltrain</h4>
+    <h4 class='banner'>
+      <%= link_to 'Caltrain', stations_path %>
+    </h4>
     <div class='container'>
       <% if signed_in? %>
           <%= button_to 'Sign out', sign_out_path, method: :delete, class: 'btn btn-default navbar-btn sign-out pull-right' %>
-          
+
           <% else %>
           <%= link_to 'Sign up', sign_up_path, class: 'btn btn-default sign-up navbar-btn pull-right' %>
         <% end %>
