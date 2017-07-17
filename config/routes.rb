@@ -17,5 +17,5 @@ Rails.application.routes.draw do
   get '/stops/:id', to: 'stops#show', as:'stops_details'
 
   get '/favorites', to: 'favorites#index'
-  post '/favorites', to: 'favorites#create'
+  post '/favorites', to: 'favorites#create', as:'create_favorite'
 end

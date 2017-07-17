@@ -15,6 +15,8 @@
         <div class="col s12 m6">
           <div class="card blue-grey darken-1">
             <div class="card-content white-text">
+              <% trip_id = @trips[i][0]["id"]%>
+              <%= link_to "Favorite", create_favorite_path(user_id:current_user.id, stop_id:trip_id), :method => "post" %>
               <span class="card-title activator orange-title">Train #<%= @trips[i][2]["train_number"] %><i class="material-icons right">more_vert</i></span></span>
               <p>Departure : <%= dep_time.to_datetime.utc.strftime("%l:%M %p") %></p>
               <p>Arrival : <%= arv_time.utc.to_datetime.strftime("%l:%M %p") %></p>
