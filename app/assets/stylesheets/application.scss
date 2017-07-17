@@ -45,3 +45,13 @@ td {
 .orange-title {
   color: #ffab40;
 }
+.btn.waves-effect.waves-light {
+  margin-top: 30px;
+  float: right;
+}
+div.input-field.col.s12 {
+  margin-top: 20px;
+}
+div.input-field.col.s12 > label {
+  left: 0;
+}
