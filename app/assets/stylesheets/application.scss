@@ -11,18 +11,16 @@
  * It is generally better to create a new file per style scope.
  */
 
- @import "materialize";
+@import "materialize";
 
 body {
   font-family: 'Zilla Slab', sans-serif;
-}
-.container {
-  padding-top: 70px;
 }
 .banner {
   color: #fff;
   background-color: #000;
   position: fixed;
+  top: 0;
   width: 100%;
   padding: 10px;
   margin-top: 0;

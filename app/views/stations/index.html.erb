@@ -1,9 +1,10 @@
 <% require 'date' %>
 
+<%= stylesheet_link_tag 'stations', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+<%= image_tag "#{rand(1..13)}.jpg", class: 'bg' %>
 <div class='container'>
-
   <%= form_tag('/stops', controller: 'stations', method: 'get', action: 'index') do %>
-
     <div class="input-field col s12">
       <%= select_tag(:from, options_for_select( @stations.collect{ |s| [s.name] } )) %>
       <%= label_tag(:from, 'From') %>
@@ -16,11 +17,12 @@
 
         <!-- <%= label_tag(:time, 'Train Schedule After') %>
         <%= time_select 'time', 'time', {ampm: true}, {minute_step: 15} %> -->
+    <div class="input-field col s12">
+      <%= label_tag(:to, 'Train Schedule After') %>
+      <%= text_field_tag 'time', Time.now.strftime('%I:%M%p'), class: "timepicker" %>
+    </div>
 
-    <%= label_tag(:to, 'Train Schedule After') %>
-    <%= text_field_tag 'time', Time.now.strftime('%I:%M%p'), class: "timepicker" %>
-
-    <div class="range-field">
+    <div class="range-field class="input-field col s12"">
       <%= label_tag(:range, 'Departing Within Next (default 2 hours)') %>
       <%= range_field_tag(:range, 2, in: 1..12) %>
     </div>
@@ -29,8 +31,9 @@
       <i class="material-icons right">search</i>
     </button>
   <% end %>
-
+  <div class="clear"></div>
 </div>
+  
 
 <div class='container'>
   <div id="map"></div>
