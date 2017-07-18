@@ -78,12 +78,25 @@ function initMap() {
     // bounds.extend(marker.position);
     google.maps.event.addListener(marker, 'click', (function(marker) {
       return function() {
-        var info = "<%= "#{station.station_name}" %>";
+        var info = "<%= "#{station.name}" %>" + " Station<div class='set_location set_from'>Set From Station</div><div class='set_location set_to'>Set To Station</div>";
         infowindow.setContent(info);
         infowindow.open(map, marker);
       }
     })(marker));
+
   <% end %>
+
+  google.maps.event.addDomListener(infowindow, 'domready', function() {
+    $('.set_from').click(function() {
+      str = infowindow.content;
+      console.log(str);
+    });
+    $('.set_to').click(function() {
+      str = infowindow.content;
+      console.log(str);
+    });
+  });
+
   // map.fitBounds(bounds);
 
 }
