@@ -33,11 +33,11 @@
   <% end %>
   <div class="clear"></div>
 </div>
-  
 
-<div class='container'>
-  <div id="map"></div>
-</div>
+
+
+<div id="map"></div>
+
 
 <script async defer
   src="https://maps.googleapis.com/maps/api/js?libraries=geometry&amp;sensor=false&key=AIzaSyAL8ZS_LQ3BAArQoq4-VxL043JkHMn7Ud0&callback=initMap">
@@ -53,6 +53,7 @@ function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 10,
     center: {lat: 37.4858315, lng: -122.2317188},
+    scrollwheel: false,
     styles: [
       {
         featureType: 'transit',
