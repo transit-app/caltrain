@@ -10,9 +10,12 @@ class FavoritesController < ApplicationController
     to = params[:to]
     user_id = params[:user_id].to_i
     @favorite = current_user.favorites.build({user_id:user_id, source:from, destination:to})
+    
 
-      if @favorite.valid?
+      if @favorite.valid? &&
           @favorite.save
+          flash[:notice] = "Saved to Favorites"
+          redirect_to '/favorites'
 
       else
         @favorite = Favorite.create
