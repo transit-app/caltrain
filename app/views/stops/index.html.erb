@@ -1,20 +1,18 @@
 <%= stylesheet_link_tag 'stops', media: 'all', 'data-turbolinks-track': 'reload' %>
 
 <div class='container'>
-  <% flash.each do |key, value| %>
-        <%= value %>
-      <% end %>
   <h5>
-    <%= params[:from] %>
-    <% from = params[:from]%>
+
     <%= @trip_data[:station_from] %>
     <i class="tiny material-icons">fast_forward</i>
     <%= @trip_data[:station_to] %>
-    <%= params[:to] %>
+    <% from = params[:from]%>
     <% to = params[:to]%>
-    <%= link_to "Favorite", create_favorite_path(user_id:current_user.id,from:from, to:to), :method => "post" %>
+    <% if current_user && !current_user.has_favorite?(current_user.id, from, to) %>
+      <%= link_to "Favorite", create_favorite_path(user_id:current_user.id,from:from, to:to), :method => "post" %>
+    <% end %>
   </h5>
-    
+
   <% if @trip_data[:trips].empty? %>
     <h1>No trips available.</h1>
   <% else %>
