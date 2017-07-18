@@ -1,8 +1,11 @@
 class FavoritesController < ApplicationController
   def index
-    user_Id = current_user.id
-    @favorites = Favorite.where(user_id:user_Id)
-
+    if current_user
+      user_id = current_user.id
+      @favorites = Favorite.where(user_id:user_id)
+    else
+      redirect_to '/'
+    end
   end
 
   def create
@@ -10,20 +13,26 @@ class FavoritesController < ApplicationController
     to = params[:to]
     user_id = params[:user_id].to_i
     @favorite = current_user.favorites.build({user_id:user_id, source:from, destination:to})
-    
 
-      if @favorite.valid? &&
-          @favorite.save
-          flash[:notice] = "Saved to Favorites"
-          redirect_to '/favorites'
-
-      else
-        @favorite = Favorite.create
-        flash[:error] = "Oops!"
-        redirect_to '/'
+    if @favorite.valid? && !current_user.has_favorite?(@favorite.user_id, @favorite.source, @favorite.destination) && @favorite.save
+        flash[:notice] = "Saved to Favorites!"
+        redirect_to '/favorites'
+    else
+      @favorite = Favorite.create
+      flash[:error] = "You already have that route in your favorites."
+      redirect_to '/favorites'
     end
   end
+
+  def destroy
+    @favorite = Favorite.find(params[:id])
+    @favorite.destroy
+    flash[:error] = 'The route has been deleted from your favorites successfully.'
+    redirect_to favorites_path
+  end
+
   private
+
   def fav_params
        params.require(:favorite).permit(:stop_id,:user_id)
      end

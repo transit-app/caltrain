@@ -20,6 +20,6 @@ $(document).ready(function() {
   $(".dropdown-button").dropdown();
   $('#dropdown1').change(function() {
     alert($("#dropdown1 option:selected").text());
-
     $('select').material_select();
+  })
 });

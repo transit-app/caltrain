@@ -1,7 +1,13 @@
 <h1>Favorites index </h1>
-<% @favorites.each do |fav| %>
-<% from = fav.source %>
-<% to = fav.destination %>
-<p> Favorite trip: <%= fav.source %> to <%= fav.destination %><%= link_to "View this Route", stations_path(from:from, to:to), :method => "get" %></p>
-
+<% flash.each do |key, value| %>
+  <%= value %>
 <% end %>
+<ol>
+  <% @favorites.each do |fav| %>
+    <% from = fav.source %>
+    <% to = fav.destination %>
+    <p>Favorite trip: <%= fav.source %> to <%= fav.destination %>
+      <%= link_to "Delete", delete_favorite_path(fav.id), method: :delete, data: { confirm: 'Are you sure you want to delete?' } %>
+    </p>
+  <% end %>
+</ol>
