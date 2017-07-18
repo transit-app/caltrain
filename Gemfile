@@ -22,6 +22,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 
 gem 'materialize-sass'
+gem 'clearance', '~> 1.16.0'
+
+gem 'pry'
 
 gem 'pry'
 
