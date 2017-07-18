@@ -1,46 +1,39 @@
 <%= stylesheet_link_tag 'stops', media: 'all', 'data-turbolinks-track': 'reload' %>
 
 <div class='container'>
-<h5>
-  <%= params[:from] %>
-  <i class="tiny material-icons">fast_forward</i>
-  <%= params[:to] %>
-</h5>
+  <h5>
+    <%= @trip_data[:station_from] %>
+    <i class="tiny material-icons">fast_forward</i>
+    <%= @trip_data[:station_to] %>
+  </h5>
 
-<% if @trips.empty? %>
-  <h1>No trips available.</h1>
-<% else %>
-  <% for i in 0..@trips.count-1 %>
-  <!-- We probably want to move this code below somewhere else eventually. -->
-    <% dep_time = @trips[i][0]["departure_time"] %>
-    <% arv_time = @trips[i][1]["departure_time"] %>
-      <div class="row">
-        <div class="col s12 m6">
-          <div class="card blue-grey darken-1">
-            <div class="card-content white-text">
-              <span class="card-title activator orange-title">Train #<%= @trips[i][2]["train_number"] %><i class="material-icons right">more_vert</i></span></span>
-              <p>Departure : <%= dep_time.to_datetime.utc.strftime("%l:%M %p") %></p>
-              <p>Arrival : <%= arv_time.utc.to_datetime.strftime("%l:%M %p") %></p>
-              <p>Duration : <%= ((arv_time - dep_time) / 60).floor %> minutes</p>
-            </div>
-            <div class="card-reveal blue-grey lighten-4">
-              <span class="card-title grey-text text-darken-4">Full Listing:<i class="material-icons right">close</i></span>
-              <table>
-                <% train_id = @trips[i][0]['train_id'] %>
-                <% from_stop_id = @trips[i][0]['id'] %>
-                <% to_stop_id = @trips[i][1]['id'] %>
-                <% Train.find(train_id).stops.where("id >= #{from_stop_id} and id <= #{to_stop_id}").each do |stop| %>
-                  <tr>
-                    <td><%= Station.find(stop.station_id).name %></td>
-                    <td><%= stop.departure_time.to_datetime.utc.strftime("%l:%M %p") %></td>
-                  </tr>
-                <% end %>
-              </table>
-            </div>
+  <% if @trip_data[:trips].empty? %>
+    <h1>No trips available.</h1>
+  <% else %>
+    <% @trip_data[:trips].each do |trip| %>
+    <div class="row">
+      <div class="col s12 m6">
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+            <span class="card-title activator orange-title">Train #<%= trip[:train_number] %><i class="material-icons right">more_vert</i></span></span>
+            <p>Departure : <%= trip[:departure_time] %></p>
+            <p>Arrival : <%= trip[:arrival_time] %></p>
+            <p>Duration : <%= trip[:duration] %> minutes</p>
+          </div>
+          <div class="card-reveal blue-grey lighten-4">
+            <span class="card-title grey-text text-darken-4">Full Listing:<i class="material-icons right">close</i></span>
+            <table>
+              <% trip[:trip_stops].each do |trip_stop| %>
+                <tr>
+                  <td><%= trip_stop[:name] %></td>
+                  <td><%= trip_stop[:departure_time] %></td>
+                </tr>
+              <% end %>
+            </table>
           </div>
         </div>
       </div>
+    </div>
+    <% end %>
   <% end %>
-<% end %>
-
 </div>
