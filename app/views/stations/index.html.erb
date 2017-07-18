@@ -44,10 +44,12 @@
 
 function initMap() {
   var i = 0;
-  var directionsDisplay = new google.maps.DirectionsRenderer({hideRouteList: true});
+  var infowindow = new google.maps.InfoWindow();
+  var directionsDisplay = new google.maps.DirectionsRenderer({hideRouteList: true, suppressMarkers: true, preserveViewport: true, markerOptions: {visible: false}});
   var directionsService = new google.maps.DirectionsService;
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 14,
+    zoom: 10,
+    center: {lat: 37.4858315, lng: -122.2317188},
     styles: [
       {
         featureType: 'transit',
@@ -57,93 +59,31 @@ function initMap() {
     ]
   });
 
-
   directionsDisplay.setMap(map);
   calculateAndDisplayRoute(directionsService, directionsDisplay);
 
-  var infowindow1 = new google.maps.InfoWindow({
-    content: 'San Bruno Station<div class="set_location set_from">Set From Station</div><div class="set_location set_to">Set To Station</div>'
-  });
+  var image = "https://dl.dropboxusercontent.com/s/2pjw2ku51x8mpoz/train_marker2.png?dl=0";
+  <% @stations.each do |station| %>
+    <% coord = "{lat: #{station.latitude}, lng: #{station.longitude}}" %>
+    var marker = new google.maps.Marker({
+      position: <%= coord %>,
+      map: map,
+      title: "<%= "#{station.name}" %>",
+      icon: image
+    });
+    // bounds.extend(marker.position);
+    google.maps.event.addListener(marker, 'click', (function(marker) {
+      return function() {
+        var info = "<%= "#{station.station_name}" %>";
+        infowindow.setContent(info);
+        infowindow.open(map, marker);
+      }
+    })(marker));
+  <% end %>
+  // map.fitBounds(bounds);
 
-  // infowindow.setContent('<a href="#" id="test">test</a>');
-  google.maps.event.addDomListener(infowindow1, 'domready', function() {
-      $('.set_from').click(function() {
-        str = infowindow1.content;
-        fromLocation = str.substring(0,str.indexOf("Station")-1);
-        $('.select-dropdown')[0].material_select();
-        $(".select-dropdown")[0].val = fromLocation;
-        $('.select-dropdown')[0].material_select();
-      });
-      $('.set_to').click(function() {
-        str = infowindow1.content;
-        toLocation = str.substring(0,str.indexOf("Station")-1);
-        console.log(toLocation);
-        $(".select-dropdown")[2].value = toLocation;
-        $('.select-dropdown')[2].material_select();
-      });
-  });
+}
 
-  var myLatLng = {lat: 37.6378, lng: -122.4163};
-  var marker1 = new google.maps.Marker({
-    position: myLatLng,
-    map: map,
-    title: 'San Bruno'
-  });
-
-  marker1.addListener('click', function() {
-    infowindow1.open(map, marker1);
-    // console.log(marker.title);
-    // console.log($(".select-dropdown"))
-    // if (i===0) {
-    //   $(".select-dropdown")[0].value = marker.title;
-    // } else {
-    //   $(".select-dropdown")[2].value = marker.title;
-    // }
-    // i++;
-  });
-
-
-
-
-  var infowindow2 = new google.maps.InfoWindow({
-    content: 'Palo Alto Station<div class="set_location set_from">Set From Station</div><div class="set_location set_to">Set To Station</div>'
-  });
-
-  // infowindow.setContent('<a href="#" id="test">test</a>');
-  google.maps.event.addDomListener(infowindow2, 'domready', function() {
-      $('.set_from').click(function() {
-        str = infowindow2.content;
-        fromLocation = str.substring(0,str.indexOf("Station")-1);
-        $(".select-dropdown")[0].value = fromLocation;
-      });
-      $('.set_to').click(function() {
-        str = infowindow2.content;
-        toLocation = str.substring(0,str.indexOf("Station")-1);
-        console.log(toLocation);
-        $(".select-dropdown")[2].value = toLocation;
-      });
-  });
-
-  var myLatLng = {lat: 37.4440, lng: -122.1663};
-  var marker2 = new google.maps.Marker({
-    position: myLatLng,
-    map: map,
-    title: 'Palo Alto'
-  });
-
-  marker2.addListener('click', function() {
-    infowindow2.open(map, marker2);
-    // console.log(marker.title);
-    // console.log($(".select-dropdown"))
-    // if (i===0) {
-    //   $(".select-dropdown")[0].value = marker.title;
-    // } else {
-    //   $(".select-dropdown")[2].value = marker.title;
-    // }
-    // i++;
-  });
-
-  }
 
   function calculateAndDisplayRoute(directionsService, directionsDisplay) {
 
@@ -151,10 +91,11 @@ function initMap() {
     origin: "San Francisco Caltrain Station",
     destination: "Gilroy Caltrain Station",
     // travelMode: google.maps.TravelMode[selectedMode],
-    provideRouteAlternatives: false,
+    provideRouteAlternatives: true,
     travelMode: 'TRANSIT',
     transitOptions: {
-      modes: ['TRAIN']
+      modes: ['TRAIN'],
+      routingPreference: 'FEWER_TRANSFERS'
     }
 
     },
