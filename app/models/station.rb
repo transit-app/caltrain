@@ -48,10 +48,4 @@ class Station < ApplicationRecord
     @trips
   end
 
-  def self.get_station_id stations, info_text
-    explode
-
-  end
-
-
 end
