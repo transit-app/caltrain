@@ -16,3 +16,10 @@
 //= require turbolinks
 //= require materialize-sprockets
 //= require_tree .
+$(document).ready(function() {
+  $(".dropdown-button").dropdown();
+  $('#dropdown1').change(function() {
+    alert($("#dropdown1 option:selected").text());
+
+    $('select').material_select();
+});
