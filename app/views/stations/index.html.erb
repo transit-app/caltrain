@@ -61,27 +61,86 @@ function initMap() {
   directionsDisplay.setMap(map);
   calculateAndDisplayRoute(directionsService, directionsDisplay);
 
-  var infowindow = new google.maps.InfoWindow({
-    content: 'San Bruno Station'
+  var infowindow1 = new google.maps.InfoWindow({
+    content: 'San Bruno Station<div class="set_location set_from">Set From Station</div><div class="set_location set_to">Set To Station</div>'
+  });
+
+  // infowindow.setContent('<a href="#" id="test">test</a>');
+  google.maps.event.addDomListener(infowindow1, 'domready', function() {
+      $('.set_from').click(function() {
+        str = infowindow1.content;
+        fromLocation = str.substring(0,str.indexOf("Station")-1);
+        $('.select-dropdown')[0].material_select();
+        $(".select-dropdown")[0].val = fromLocation;
+        $('.select-dropdown')[0].material_select();
+      });
+      $('.set_to').click(function() {
+        str = infowindow1.content;
+        toLocation = str.substring(0,str.indexOf("Station")-1);
+        console.log(toLocation);
+        $(".select-dropdown")[2].value = toLocation;
+        $('.select-dropdown')[2].material_select();
+      });
   });
 
   var myLatLng = {lat: 37.6378, lng: -122.4163};
-  var marker = new google.maps.Marker({
+  var marker1 = new google.maps.Marker({
     position: myLatLng,
     map: map,
     title: 'San Bruno'
   });
 
-  marker.addListener('click', function() {
-    infowindow.open(map, marker);
-    console.log(marker.title);
-    console.log($(".select-dropdown"))
-    if (i===0) {
-      $(".select-dropdown")[0].value = marker.title;
-    } else {
-      $(".select-dropdown")[2].value = marker.title;
-    }
-    i++;
+  marker1.addListener('click', function() {
+    infowindow1.open(map, marker1);
+    // console.log(marker.title);
+    // console.log($(".select-dropdown"))
+    // if (i===0) {
+    //   $(".select-dropdown")[0].value = marker.title;
+    // } else {
+    //   $(".select-dropdown")[2].value = marker.title;
+    // }
+    // i++;
+  });
+
+
+
+
+  var infowindow2 = new google.maps.InfoWindow({
+    content: 'Palo Alto Station<div class="set_location set_from">Set From Station</div><div class="set_location set_to">Set To Station</div>'
+  });
+
+  // infowindow.setContent('<a href="#" id="test">test</a>');
+  google.maps.event.addDomListener(infowindow2, 'domready', function() {
+      $('.set_from').click(function() {
+        str = infowindow2.content;
+        fromLocation = str.substring(0,str.indexOf("Station")-1);
+        $(".select-dropdown")[0].value = fromLocation;
+      });
+      $('.set_to').click(function() {
+        str = infowindow2.content;
+        toLocation = str.substring(0,str.indexOf("Station")-1);
+        console.log(toLocation);
+        $(".select-dropdown")[2].value = toLocation;
+      });
+  });
+
+  var myLatLng = {lat: 37.4440, lng: -122.1663};
+  var marker2 = new google.maps.Marker({
+    position: myLatLng,
+    map: map,
+    title: 'Palo Alto'
+  });
+
+  marker2.addListener('click', function() {
+    infowindow2.open(map, marker2);
+    // console.log(marker.title);
+    // console.log($(".select-dropdown"))
+    // if (i===0) {
+    //   $(".select-dropdown")[0].value = marker.title;
+    // } else {
+    //   $(".select-dropdown")[2].value = marker.title;
+    // }
+    // i++;
   });
 
   }
@@ -102,7 +161,7 @@ function initMap() {
     function(response, status) {
       if (status == 'OK') {
         // console.log(response)
-        response.routes[0].legs.forEach(x => x.steps.forEach(y => y.transit.line.name=""))
+        // response.routes[0].legs.forEach(x => x.steps.forEach(y => y.transit.line.name=""))
         directionsDisplay.setDirections(response);
       } else {
         window.alert('Directions request failed due to ' + status);

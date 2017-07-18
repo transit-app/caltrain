@@ -21,6 +21,7 @@ csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
 csv.each do |row|
   s = Station.new
   s.name = row['name']
+  s.station_name = row['station_name']
   s.save
   puts "   Station #{s.name} saved"
 end

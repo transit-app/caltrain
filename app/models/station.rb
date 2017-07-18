@@ -2,6 +2,9 @@ class Station < ApplicationRecord
   has_many :stops, dependent: :destroy
   has_many :trains, through: :stops
 
+  geocoded_by :station_name
+  after_validation :geocode
+
   def self.get_trips (departure_stop, arrival_stop, time, range)
     time_after = time
     time_before = (time_after.to_time + (range.to_i * 60 * 60)).to_time.strftime('%I:%M%p')
