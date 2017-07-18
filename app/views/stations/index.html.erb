@@ -90,10 +90,16 @@ function initMap() {
     $('.set_from').click(function() {
       str = infowindow.content;
       console.log(str);
+      $('#from :selected').removeAttr("selected")
+      $('#from option').eq(1).attr("selected", "selected")
+      $('select').material_select();
     });
     $('.set_to').click(function() {
       str = infowindow.content;
       console.log(str);
+      $('#to :selected').removeAttr("selected")
+      $('#to option').eq(10).attr("selected", "selected")
+      $('select').material_select();
     });
   });
 
