@@ -16,8 +16,10 @@ class FavoritesController < ApplicationController
     @favorite = current_user.favorites.build({user_id:user_id, source:from, destination:to})
 
       if @favorite.valid?
+
         @favorite.save
         redirect_to favorites_path
+        
       else
         @favorite = Favorite.create
         flash[:error] = "Oops!"

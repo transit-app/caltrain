@@ -1,5 +1,7 @@
 <h1>Favorites index </h1>
 <% @favorites.each do |fav| %>
-<p> Favorite trip: <%= fav.stop_id %> </p>
+<% from = fav.source %>
+<% to = fav.destination %>
+<p> Favorite trip: <%= fav.source %> to <%= fav.destination %><%= link_to "View this Route", stations_path(from:from, to:to), :method => "get" %></p>
 
 <% end %>
