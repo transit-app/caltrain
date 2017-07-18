@@ -1,3 +1,23 @@
 // Place all the styles related to the stops controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.container {
+  background: #fff;
+  margin-top: 100px;
+}
+div.card-content > p:first-child {
+  padding-top: 1em;
+}
+div.card-content > p {
+  padding-bottom: .5em;
+}
+td {
+  padding: 5px;
+}
+.orange-title {
+  color: #ffab40;
+}
+.btn.waves-effect.waves-light {
+  margin-top: 30px;
+  float: right;
+}

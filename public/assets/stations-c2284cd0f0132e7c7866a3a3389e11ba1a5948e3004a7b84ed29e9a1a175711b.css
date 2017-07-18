@@ -1,0 +1,39 @@
+/* line 5, /Users/younjiwoo/repositories/wdi/transit-app/app/assets/stylesheets/stations.scss */
+.container {
+  margin-top: 100px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 3em;
+  border-radius: 10px;
+}
+
+/* line 11, /Users/younjiwoo/repositories/wdi/transit-app/app/assets/stylesheets/stations.scss */
+.bg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
+
+/* line 18, /Users/younjiwoo/repositories/wdi/transit-app/app/assets/stylesheets/stations.scss */
+div.input-field.col.s12 {
+  margin-top: 20px;
+}
+
+/* line 21, /Users/younjiwoo/repositories/wdi/transit-app/app/assets/stylesheets/stations.scss */
+div.input-field.col.s12 > label, .range-field > label, .active {
+  left: 0;
+  font-size: 1em;
+  color: #fff;
+}
+
+/* line 26, /Users/younjiwoo/repositories/wdi/transit-app/app/assets/stylesheets/stations.scss */
+.select-wrapper > input.select-dropdown, input#time.timepicker {
+  color: #fff;
+  font-size: 1.5em;
+}
+
+/* line 30, /Users/younjiwoo/repositories/wdi/transit-app/app/assets/stylesheets/stations.scss */
+.clear {
+  clear: both;
+}

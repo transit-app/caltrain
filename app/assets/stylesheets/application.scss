@@ -11,47 +11,18 @@
  * It is generally better to create a new file per style scope.
  */
 
- @import "materialize";
+@import "materialize";
 
 body {
   font-family: 'Zilla Slab', sans-serif;
-}
-.container {
-  padding-top: 70px;
 }
 .banner {
   color: #fff;
   background-color: #000;
   position: fixed;
+  top: 0;
   width: 100%;
   padding: 10px;
   margin-top: 0;
   z-index: 10;
-}
-
-// .range-field span .value {
-//   display: none;
-// }
-
-div.card-content > p:first-child {
-  padding-top: 1em;
-}
-div.card-content > p {
-  padding-bottom: .5em;
-}
-td {
-  padding: 5px;
-}
-.orange-title {
-  color: #ffab40;
-}
-.btn.waves-effect.waves-light {
-  margin-top: 30px;
-  float: right;
-}
-div.input-field.col.s12 {
-  margin-top: 20px;
-}
-div.input-field.col.s12 > label {
-  left: 0;
 }
