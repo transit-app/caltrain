@@ -26,7 +26,7 @@
        <div class="brand-logo"><%= link_to 'Caltrain', stations_path %></div>
       <% if signed_in? %>
       <ul id="dropdown1" class="dropdown-content">
-         <%= collection_select(:id, :source, @favorites, :id, :route_name, prompt: true, {nil}) %>
+         <%= collection_select(:id, :source, @favorites, :id, :route_name, prompt: "select a favorite", :selected => params[:route_name], class: "browser-default") %>
      </ul>
       <ul id="nav-mobile" class="right">
         <li><%= current_user.email %></li>

@@ -19,7 +19,7 @@ class FavoritesController < ApplicationController
 
         @favorite.save
         redirect_to favorites_path
-        
+
       else
         @favorite = Favorite.create
         flash[:error] = "Oops!"
