@@ -72,13 +72,13 @@ function initMap() {
     var marker = new google.maps.Marker({
       position: <%= coord %>,
       map: map,
-      title: "<%= "#{station.name}" %>",
+      title: "<%= station.name %>",
       icon: image
     });
     // bounds.extend(marker.position);
     google.maps.event.addListener(marker, 'click', (function(marker) {
       return function() {
-        var info = "<%= "#{station.name}" %>" + " Station<div class='set_location set_from'>Set From Station</div><div class='set_location set_to'>Set To Station</div>";
+        var info = "<%= station.name %>" + " Station<div class='set_location set_from' data-station-id='<%= station.id - 1 %>'>Set From Station</div><div class='set_location set_to' data-station-id='<%= station.id - 1 %>'>Set To Station</div>";
         infowindow.setContent(info);
         infowindow.open(map, marker);
       }
@@ -87,18 +87,14 @@ function initMap() {
   <% end %>
 
   google.maps.event.addDomListener(infowindow, 'domready', function() {
-    $('.set_from').click(function() {
-      str = infowindow.content;
-      console.log(str);
-      $('#from :selected').removeAttr("selected")
-      $('#from option').eq(1).attr("selected", "selected")
+    $('.set_from').click(function(event) {
+      var stationId = parseInt($(event.target).data("station-id"))
+      $('#from')[0].selectedIndex = stationId
       $('select').material_select();
     });
     $('.set_to').click(function() {
-      str = infowindow.content;
-      console.log(str);
-      $('#to :selected').removeAttr("selected")
-      $('#to option').eq(10).attr("selected", "selected")
+      var stationId = parseInt($(event.target).data("station-id"))
+      $('#to')[0].selectedIndex = stationId
       $('select').material_select();
     });
   });
