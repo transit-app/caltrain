@@ -1,0 +1,31 @@
+/* line 4, /Users/billschuetzle/wdi/caltrain/app/assets/stylesheets/stops.scss */
+.container {
+  background: #fff;
+  margin-top: 100px;
+}
+
+/* line 8, /Users/billschuetzle/wdi/caltrain/app/assets/stylesheets/stops.scss */
+div.card-content > p:first-child {
+  padding-top: 1em;
+}
+
+/* line 11, /Users/billschuetzle/wdi/caltrain/app/assets/stylesheets/stops.scss */
+div.card-content > p {
+  padding-bottom: .5em;
+}
+
+/* line 14, /Users/billschuetzle/wdi/caltrain/app/assets/stylesheets/stops.scss */
+td {
+  padding: 5px;
+}
+
+/* line 17, /Users/billschuetzle/wdi/caltrain/app/assets/stylesheets/stops.scss */
+.orange-title {
+  color: #ffab40;
+}
+
+/* line 20, /Users/billschuetzle/wdi/caltrain/app/assets/stylesheets/stops.scss */
+.btn.waves-effect.waves-light {
+  margin-top: 30px;
+  float: right;
+}
