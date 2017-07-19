@@ -44,7 +44,7 @@
   function initMap() {
 
     var infowindow = new google.maps.InfoWindow();
-    var directionsDisplay = new google.maps.DirectionsRenderer({hideRouteList: true, suppressMarkers: true, preserveViewport: true, markerOptions: {visible: false}});
+    var directionsDisplay = new google.maps.DirectionsRenderer({hideRouteList: true, polylineOptions: {strokeColor: "black", strokeWeight: 6}, suppressMarkers: true, preserveViewport: true, markerOptions: {visible: false}});
     var directionsService = new google.maps.DirectionsService;
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 10,
@@ -59,6 +59,8 @@
       ]
     });
 
+
+
     google.maps.event.addDomListener(window, "resize", function() {
       var center = map.getCenter();
       google.maps.event.trigger(map, "resize");
@@ -68,7 +70,8 @@
     directionsDisplay.setMap(map);
     calculateAndDisplayRoute(directionsService, directionsDisplay);
 
-    var image = "https://dl.dropboxusercontent.com/s/2pjw2ku51x8mpoz/train_marker2.png?dl=0";
+    // var image = "https://dl.dropboxusercontent.com/s/2pjw2ku51x8mpoz/train_marker2.png?dl=0";
+    var image = "https://dl.dropboxusercontent.com/s/i323dasyjauidwa/train_marker.png?dl=0";
     <% @stations.each do |station| %>
       <% coord = "{lat: #{station.latitude}, lng: #{station.longitude}}" %>
       var marker = new google.maps.Marker({
