@@ -1,4 +1,5 @@
-<h1>Favorites index </h1>
+<%= stylesheet_link_tag 'favorites', media: 'all', 'data-turbolinks-track': 'reload' %>
+
 <% flash.each do |key, value| %>
   <h3><%= value %></h3>
 <% end %>
@@ -6,8 +7,8 @@
   <% @favorites.each do |fav| %>
     <% from = fav.source %>
     <% to = fav.destination %>
-    <p>Favorite trip: <%= fav.source %> to <%= fav.destination %>
-      <%= link_to "Delete", delete_favorite_path(fav.id), method: :delete, data: { confirm: 'Are you sure you want to delete?' } %>
-    </p>
+    <h5>From <%= fav.source %> to <%= fav.destination %>
+      <%= link_to raw("<i class='tiny material-icons'>delete</i>"), delete_favorite_path(fav.id), class: 'waves-effect waves-light btn delete-btn', method: :delete, data: { confirm: 'Are you sure you want to delete?' } %>
+    </h5>
   <% end %>
 </ol>
