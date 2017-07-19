@@ -80,7 +80,7 @@
 
       google.maps.event.addListener(marker, 'click', (function(marker) {
         return function() {
-          var info = "<%= station.name %>" + " Station<div class='set_location set_from' data-station-id='<%= station.id - 1 %>'>Set From Station</div><div class='set_location set_to' data-station-id='<%= station.id - 1 %>'>Set To Station</div>";
+          var info = "<div class='station-name'><%= station.name %>" + " Station</div><div class='set_location set_from' data-station-id='<%= station.id - 1 %>'>Set As From Station</div><div class='set_location set_to' data-station-id='<%= station.id - 1 %>'>Set As To Station</div>";
           infowindow.setContent(info);
           infowindow.open(map, marker);
         }
