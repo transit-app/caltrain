@@ -16,4 +16,12 @@ $(document).on('turbolinks:load', function() {
     ampmclickable: true, // make AM PM clickable
     aftershow: function(){} //Function for after opening timepicker
   });
+  // grab the container.
+  let browserHeight = $('img').innerHeight();
+  let containerHeight = $('.container').innerHeight();
+  let marginTop = parseInt($('.container').css('margin-top'));
+  let navHeight = $('nav').innerHeight();
+  let marginBottom = (browserHeight - (containerHeight + marginTop + navHeight)).toString();
+  $('.container').css('margin-bottom', marginBottom + 'px' );
+
 });
