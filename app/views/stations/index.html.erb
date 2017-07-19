@@ -41,63 +41,67 @@
 
 <script>
 
-function initMap() {
-  var i = 0;
-  var infowindow = new google.maps.InfoWindow();
-  var directionsDisplay = new google.maps.DirectionsRenderer({hideRouteList: true, suppressMarkers: true, preserveViewport: true, markerOptions: {visible: false}});
-  var directionsService = new google.maps.DirectionsService;
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 10,
-    center: {lat: 37.4858315, lng: -122.2317188},
-    scrollwheel: false,
-    styles: [
-      {
-        featureType: 'transit',
-        elementType: 'all',
-        stylers: [{visibility: 'off'}]
-      }
-    ]
-  });
+  function initMap() {
 
-  directionsDisplay.setMap(map);
-  calculateAndDisplayRoute(directionsService, directionsDisplay);
-
-  var image = "https://dl.dropboxusercontent.com/s/2pjw2ku51x8mpoz/train_marker2.png?dl=0";
-  <% @stations.each do |station| %>
-    <% coord = "{lat: #{station.latitude}, lng: #{station.longitude}}" %>
-    var marker = new google.maps.Marker({
-      position: <%= coord %>,
-      map: map,
-      title: "<%= station.name %>",
-      icon: image
+    var infowindow = new google.maps.InfoWindow();
+    var directionsDisplay = new google.maps.DirectionsRenderer({hideRouteList: true, suppressMarkers: true, preserveViewport: true, markerOptions: {visible: false}});
+    var directionsService = new google.maps.DirectionsService;
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 10,
+      center: {lat: 37.4858315, lng: -122.2317188},
+      scrollwheel: false,
+      styles: [
+        {
+          featureType: 'transit',
+          elementType: 'all',
+          stylers: [{visibility: 'off'}]
+        }
+      ]
     });
-    // bounds.extend(marker.position);
-    google.maps.event.addListener(marker, 'click', (function(marker) {
-      return function() {
-        var info = "<%= station.name %>" + " Station<div class='set_location set_from' data-station-id='<%= station.id - 1 %>'>Set From Station</div><div class='set_location set_to' data-station-id='<%= station.id - 1 %>'>Set To Station</div>";
-        infowindow.setContent(info);
-        infowindow.open(map, marker);
-      }
-    })(marker));
 
-  <% end %>
-
-  google.maps.event.addDomListener(infowindow, 'domready', function() {
-    $('.set_from').click(function(event) {
-      var stationId = parseInt($(event.target).data("station-id"))
-      $('#from')[0].selectedIndex = stationId
-      $('select').material_select();
+    google.maps.event.addDomListener(window, "resize", function() {
+      var center = map.getCenter();
+      google.maps.event.trigger(map, "resize");
+      map.setCenter(center);
     });
-    $('.set_to').click(function() {
-      var stationId = parseInt($(event.target).data("station-id"))
-      $('#to')[0].selectedIndex = stationId
-      $('select').material_select();
+
+    directionsDisplay.setMap(map);
+    calculateAndDisplayRoute(directionsService, directionsDisplay);
+
+    var image = "https://dl.dropboxusercontent.com/s/2pjw2ku51x8mpoz/train_marker2.png?dl=0";
+    <% @stations.each do |station| %>
+      <% coord = "{lat: #{station.latitude}, lng: #{station.longitude}}" %>
+      var marker = new google.maps.Marker({
+        position: <%= coord %>,
+        map: map,
+        title: "<%= station.name %>",
+        icon: image
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker) {
+        return function() {
+          var info = "<%= station.name %>" + " Station<div class='set_location set_from' data-station-id='<%= station.id - 1 %>'>Set From Station</div><div class='set_location set_to' data-station-id='<%= station.id - 1 %>'>Set To Station</div>";
+          infowindow.setContent(info);
+          infowindow.open(map, marker);
+        }
+      })(marker));
+
+    <% end %>
+
+    google.maps.event.addDomListener(infowindow, 'domready', function() {
+      $('.set_from').click(function(event) {
+        var stationId = parseInt($(event.target).data("station-id"))
+        $('#from')[0].selectedIndex = stationId
+        $('select').material_select();
+      });
+      $('.set_to').click(function() {
+        var stationId = parseInt($(event.target).data("station-id"))
+        $('#to')[0].selectedIndex = stationId
+        $('select').material_select();
+      });
     });
-  });
 
-  // map.fitBounds(bounds);
-
-}
+  }
 
 
   function calculateAndDisplayRoute(directionsService, directionsDisplay) {
@@ -105,7 +109,6 @@ function initMap() {
   directionsService.route({
     origin: "San Francisco Caltrain Station",
     destination: "Gilroy Caltrain Station",
-    // travelMode: google.maps.TravelMode[selectedMode],
     provideRouteAlternatives: true,
     travelMode: 'TRANSIT',
     transitOptions: {
