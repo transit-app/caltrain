@@ -16,17 +16,12 @@
 body {
   font-family: 'Zilla Slab', sans-serif;
 }
-
-.banner {
-  color: #fff;
-  background-color: #000;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 10px;
-  margin-top: 0;
-  z-index: 10;
-  height:70px;
+.logo {
+  font-size: 1.6em;
+  margin-left: 20px;
+}
+nav {
+  background-color: #26a69a;
 }
 .nav-wrapper {
   color: #fff;
@@ -34,11 +29,6 @@ body {
   z-index: 10;
   height:100px;
 }
-
-// .range-field span .value {
-//   display: none;
-// }
-
 div.card-content > p:first-child {
   padding-top: 1em;
 }

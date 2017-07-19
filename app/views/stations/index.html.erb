@@ -2,7 +2,7 @@
 
 <%= stylesheet_link_tag 'stations', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-<%= image_tag "#{rand(1..13)}.jpg", class: 'bg' %>
+<%= image_tag "#{rand(1..8)}.jpg", class: 'bg' %>
 <div class='container'>
   <%= form_tag('/stops', controller: 'stations', method: 'get', action: 'index') do %>
     <div class="input-field col s12">
