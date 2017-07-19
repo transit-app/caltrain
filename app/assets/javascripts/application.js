@@ -22,8 +22,8 @@ $(document).ready(function() {
   $('#dropdown1 li a').click(function(event) {
     var fromStationID = parseInt($(event.target).data("from-station-id"));
     var toStationID = parseInt($(event.target).data("to-station-id"));
-    console.log(fromStationID, toStationID);
-    // alert($("#dropdown1 option:selected").text());
-    // $('select').material_select();
+    $('#from')[0].selectedIndex = fromStationID - 1
+    $('#to')[0].selectedIndex = toStationID - 1
+    $('select').material_select();
   })
 });
