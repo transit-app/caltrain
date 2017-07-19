@@ -23,7 +23,13 @@ Heroku Link: https://belle-vin-42587.herokuapp.com/
 
 
 ## Screenshot of the app
-![screenshot #1]
+![screenshot #1](/public/assets/Bayrails_splash.png?raw=true "Bayrails")
+
+![screenshot #2](/public/assets/Bayrails_maps.png?raw=true "Bayrails-maps")
+
+![screenshot #3](/public/assets/Map_view.png?raw=true "Bayrails-map-view")
+
+![screenshot #4](/public/assets/Trip_details.png?raw=true "Bayrails-trip-details")
 
 
 
