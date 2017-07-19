@@ -9,7 +9,7 @@
     <% from = params[:from]%>
     <% to = params[:to]%>
     <% if current_user && !current_user.has_favorite?(current_user.id, from, to) %>
-      <%= link_to "Favorite", create_favorite_path(user_id:current_user.id,from:from, to:to), :method => "post" %>
+      <%= link_to "Favorite", create_favorite_path(user_id:current_user.id, from:from, to:to, from_id:@trip_data[:station_from_id], to_id:@trip_data[:station_to_id]), :method => "post" %>
     <% end %>
   </h5>
 
