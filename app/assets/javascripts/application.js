@@ -17,9 +17,13 @@
 //= require materialize-sprockets
 //= require_tree .
 $(document).ready(function() {
+  console.log("document is ready");
   $(".dropdown-button").dropdown();
-  $('#dropdown1').change(function() {
-    alert($("#dropdown1 option:selected").text());
-    $('select').material_select();
+  $('#dropdown1 li a').click(function(event) {
+    var fromStationID = parseInt($(event.target).data("from-station-id"));
+    var toStationID = parseInt($(event.target).data("to-station-id"));
+    console.log(fromStationID, toStationID);
+    // alert($("#dropdown1 option:selected").text());
+    // $('select').material_select();
   })
 });

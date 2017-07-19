@@ -16,11 +16,13 @@
         <div class="brand-logo"><%= link_to 'Caltrain', stations_path %></div>
         <% if signed_in? %>
           <ul id="dropdown1" class="dropdown-content">
-            <%= collection_select(:id, :source, @favorites, :id, :route_name, prompt: "select a favorite", :selected => params[:route_name], class: "browser-default") %>
+            <% @favorites.each do |fav| %>
+              <li><a data-from-station-id="1" data-to-station-id="5"><%= fav.source %> to <%= fav.destination %></a></li>
+            <% end %>
           </ul>
           <ul id="nav-mobile" class="right">
             <li><%= current_user.email %></li>
-            <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Favorite Routes<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a class="dropdown-button" data-activates="dropdown1">Favorite Routes<i class="material-icons right">arrow_drop_down</i></a></li>
             <li><%= link_to 'Sign out', sign_out_path, method: :delete, class: 'btn-small waves-effect waves-light right' %></li>
           </ul>
         <% else %>
