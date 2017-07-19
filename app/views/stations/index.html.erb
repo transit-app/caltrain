@@ -122,7 +122,6 @@
     },
     function(response, status) {
       if (status == 'OK') {
-        // console.log(response)
         // response.routes[0].legs.forEach(x => x.steps.forEach(y => y.transit.line.name=""))
         directionsDisplay.setDirections(response);
       } else {

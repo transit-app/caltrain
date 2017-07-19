@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Transit App</title>
+    <title>Bayrails</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -12,7 +12,7 @@
 
   <body>
     <nav>
-        <%= link_to 'Caltrain', stations_path, class: 'logo' %>
+        <%= link_to 'BayRails', stations_path, class: 'logo' %>
         <ul id="nav-mobile" class="right">
         <% if signed_in? %><!-- Logged In -->
           <ul id="dropdown1" class="dropdown-content">
