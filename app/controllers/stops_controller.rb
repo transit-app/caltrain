@@ -6,6 +6,8 @@ class StopsController < ApplicationController
     @trip_data = {
       station_from: params[:from],
       station_to: params[:to],
+      station_from_id: departure_stop.id,
+      station_to_id: arrival_stop.id,
       trips: Station.get_trips(departure_stop, arrival_stop, params[:time], params[:range])
     }
     if current_user
