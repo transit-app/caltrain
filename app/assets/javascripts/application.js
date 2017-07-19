@@ -17,7 +17,6 @@
 //= require materialize-sprockets
 //= require_tree .
 $(document).ready(function() {
-  console.log("document is ready");
   $(".dropdown-button").dropdown({
     hover: true,
     belowOrigin: true

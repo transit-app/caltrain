@@ -12,7 +12,7 @@
 
   <body>
     <nav>
-        <%= link_to 'Caltrain', stations_path %>
+        <%= link_to 'Caltrain', stations_path, class: 'logo' %>
         <ul id="nav-mobile" class="right">
         <% if signed_in? %><!-- Logged In -->
           <ul id="dropdown1" class="dropdown-content">
