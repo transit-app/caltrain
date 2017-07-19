@@ -1,6 +1,19 @@
 // Place all the styles related to the favorites controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.delete-btn-container {
+    margin-top: 30px;
+}
 .delete-btn {
   background-color: #d50000;
+  margin-bottom: 30px;
+}
+.clear {
+  clear: both;
+}
+.left {
+  float: left;
+}
+.btn.waves-effect.waves-light, .waves-effect.waves-light.btn-large {
+  margin-top: 0;
 }

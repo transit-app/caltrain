@@ -1,14 +1,19 @@
 <%= stylesheet_link_tag 'favorites', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-<% flash.each do |key, value| %>
-  <h3><%= value %></h3>
-<% end %>
-<ol>
+<div class='container'>
+  <!-- <% flash.each do |key, value| %>
+    <h3><%= value %></h3>
+  <% end %> -->
+
   <% @favorites.each do |fav| %>
     <% from = fav.source %>
     <% to = fav.destination %>
-    <h5>From <%= fav.source %> to <%= fav.destination %>
-      <%= link_to raw("<i class='tiny material-icons'>delete</i>"), delete_favorite_path(fav.id), class: 'waves-effect waves-light btn delete-btn', method: :delete, data: { confirm: 'Are you sure you want to delete?' } %>
-    </h5>
+    <div class="delete-btn-container">
+      <h5 class='clear'><%= fav.source %>
+        <i class="tiny material-icons">fast_forward</i>
+        <%= fav.destination %>
+      </h5>
+      <%= link_to raw("<i class='tiny material-icons'>delete</i>"), delete_favorite_path(fav.id), class: 'waves-effect waves-light btn delete-btn clear left', method: :delete, data: { confirm: 'Are you sure you want to delete?' } %>
+    </div>
   <% end %>
-</ol>
+</div>
