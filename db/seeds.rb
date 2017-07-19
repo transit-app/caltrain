@@ -53,6 +53,6 @@ csv.each do |row|
   s.train_id = row['train_id']
   s.departure_time = row['departure_time_offset']
   s.save
-  puts "   Stop with station_id #{s.station_id}, train_id #{s.train_id} saved"
+  # puts "   Stop with station_id #{s.station_id}, train_id #{s.train_id} saved"
 end
 puts "=> There are now #{Stop.count} rows in the stops table"
