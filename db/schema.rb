@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170718040414) do
+ActiveRecord::Schema.define(version: 20170719023921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20170718040414) do
     t.datetime "updated_at", null: false
     t.string "source"
     t.string "destination"
+    t.bigint "from_station_id"
+    t.bigint "to_station_id"
     t.index ["stop_id"], name: "index_favorites_on_stop_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
