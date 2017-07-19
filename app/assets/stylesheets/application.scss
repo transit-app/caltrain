@@ -58,6 +58,27 @@ div.input-field.col.s12 > label {
   margin: 500px 0;
 }
 
+.station-name {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
 .set_location {
   border: 1px solid grey;
+  border-radius: 4px;
+  padding: 3px 7px;
+  margin: 7px 0;
+  text-align: center;
+  transition: background-color 1s ease;
+}
+
+.set_location:hover {
+  cursor: pointer;
+  background-color: rgb(255, 255, 128);
+}
+
+.set_location:active {
+  background-color: rgb(47, 182, 47);
+  font-weight: 600;
 }
