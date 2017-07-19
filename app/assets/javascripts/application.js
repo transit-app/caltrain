@@ -18,7 +18,10 @@
 //= require_tree .
 $(document).ready(function() {
   console.log("document is ready");
-  $(".dropdown-button").dropdown();
+  $(".dropdown-button").dropdown({
+    hover: true,
+    belowOrigin: true
+  });
   $('#dropdown1 li a').click(function(event) {
     var fromStationID = parseInt($(event.target).data("from-station-id"));
     var toStationID = parseInt($(event.target).data("to-station-id"));

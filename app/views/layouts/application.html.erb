@@ -12,9 +12,9 @@
 
   <body>
     <nav>
-      <div class="nav-wrapper">
-        <div class="brand-logo"><%= link_to 'Caltrain', stations_path %></div>
-        <% if signed_in? %>
+        <%= link_to 'Caltrain', stations_path %>
+        <ul id="nav-mobile" class="right">
+        <% if signed_in? %><!-- Logged In -->
           <ul id="dropdown1" class="dropdown-content">
             <% @favorites.each do |fav| %>
               <% from_station_id = fav.from_station_id %>
@@ -25,15 +25,15 @@
           <ul id="nav-mobile" class="right">
             <li><%= current_user.email %></li>
             <li><a class="dropdown-button" data-activates="dropdown1">Favorite Routes<i class="material-icons right">arrow_drop_down</i></a></li>
-            <li><%= link_to 'Sign out', sign_out_path, method: :delete, class: 'btn-small waves-effect waves-light right' %></li>
+            <li><%= link_to 'Sign out', sign_out_path, method: :delete %></li>
           </ul>
         <% else %>
           <ul id="nav-mobile" class="right">
-            <li><%= link_to 'Log In', sign_in_path, class: 'btn-small waves-effect waves-light right' %></li>
-            <li><%= link_to 'Sign up', sign_up_path, class: 'btn-small waves-effect waves-light right' %></li>
+            <li><%= link_to 'Log In', sign_in_path %></li>
+            <li><%= link_to 'Sign up', sign_up_path %></li>
           </ul>
         <% end %>
-      </div>
+
     </nav>
     <%= yield %>
   </body>
