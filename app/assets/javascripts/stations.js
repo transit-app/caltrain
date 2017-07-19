@@ -3,9 +3,8 @@
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
   // $("#search-btn").append(`<%= link_to 'Search', stops_path(from: '${$("#from.val")}', to: '${#to.val()}', time: '14:44'), class: 'btn btn-lg btn-primary' %>`);
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
   $('select').material_select();
-
   $('.timepicker').pickatime({
     default: 'now', // Set default time
     fromnow: 0,       // set default time to * milliseconds from now (using with default = 'now')
