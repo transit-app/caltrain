@@ -33,8 +33,12 @@
             <li><%= link_to 'Sign up', sign_up_path %></li>
           </ul>
         <% end %>
-
-    </nav>
+      </nav>
+      <div class="flash">
+        <% flash.each do |key, value| %>
+          <div class="flash <%= key %>"><%= value %></div>
+        <% end %>
+     </div>
     <%= yield %>
   </body>
 </html>
