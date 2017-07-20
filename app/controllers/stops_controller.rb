@@ -1,8 +1,10 @@
 class StopsController < ApplicationController
 
   def index
-    departure_station = Station.where(name: params[:from]).first
-    arrival_station = Station.where(name: params[:to]).first
+    departure_station = Station.find(params[:from])
+    arrival_station = Station.find(params[:to])
+
+
     @trip_data = {
       station_from: params[:from],
       station_to: params[:to],
