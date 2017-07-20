@@ -3,14 +3,14 @@
 <div class='container'>
   <h5>
 
+    <% from = @trip_data[:departure] %>
+    <% to = @trip_data[:arrival] %>
     <i class="small material-icons">schedule</i>
-    <%= @trip_data[:station_from] %>
+    <%= from.name %>
     <i class="tiny material-icons">fast_forward</i>
-    <%= @trip_data[:station_to] %>
-    <% from = params[:from]%>
-    <% to = params[:to]%>
-    <% if current_user && !current_user.has_favorite?(current_user.id, from, to) %>
-      <%= link_to raw("Favorite <i class='tiny material-icons'>star</i>"), create_favorite_path(user_id:current_user.id, from:from, to:to, from_id:@trip_data[:station_from_id], to_id:@trip_data[:station_to_id]), :method => "post", class: 'orange-title fav-star' %>
+    <%= to.name %>
+    <% if current_user && !current_user.has_favorite?(current_user.id, from.name, to.name) %>
+      <%= link_to raw("Favorite <i class='tiny material-icons'>star</i>"), create_favorite_path(user_id:current_user.id, from: from, to: to, from_id: from.id, to_id: to.id), :method => "post", class: 'orange-title fav-star' %>
     <% end %>
   </h5>
 

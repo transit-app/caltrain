@@ -45,7 +45,13 @@ class Station < ApplicationRecord
         @trips << trip_item
       end
     end
-    @trips
+
+    {
+      departure: departure_station,
+      arrival: arrival_station,
+      trips: @trips
+    }
+
   end
 
 end
