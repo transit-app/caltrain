@@ -24,16 +24,16 @@ class Station < ApplicationRecord
         depart_time = departure_stop_confirm.departure_time
         arrive_time = arrival_stop_confirm.departure_time
         trip_duration = ((arrive_time - depart_time) / 60).floor
-        train_id = train.id
         departure_id = departure_stop_confirm.id
         arrival_id = arrival_stop_confirm.id
-        trip_stop_items = Train.find(train_id).stops.where("id >= #{departure_id} and id <= #{arrival_id}").map do |stop|
-
-          {
-            name: Station.find(stop.station_id).name,
-            departure_time: stop.departure_time.to_datetime.utc.strftime("%l:%M %p")
-          }
-        end
+        trip_stop_items = train.stops
+                               .where("id >= #{departure_id} and id <= #{arrival_id}")
+                               .map do |stop|
+                                  {
+                                    name: stop.station.name,
+                                    departure_time: stop.departure_time.to_datetime.utc.strftime("%l:%M %p")
+                                  }
+                                end
 
         trip_item = {
           departure_time: depart_time.to_datetime.utc.strftime("%l:%M %p"),
