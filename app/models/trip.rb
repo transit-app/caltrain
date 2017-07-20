@@ -1,5 +1,12 @@
 class Trip
-  def self.get_trips (departure_station, arrival_station, time, range)
+  def self.get_trips(params)
+    departure_station = params[:departure_station]
+    arrival_station   = params[:arrival_station]
+    time              = params[:time]
+    range             = params[:range]
+    departure_station = Station.find(params[:from])
+    arrival_station   = Station.find(params[:to])
+
     time_after = time
 
     time_before = (time_after.to_time + (range.to_i * 60 * 60)).to_time.strftime('%I:%M%p')
