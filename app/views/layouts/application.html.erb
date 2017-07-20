@@ -16,7 +16,7 @@
         <ul id="nav-mobile" class="right">
         <% if signed_in? %><!-- Logged In -->
           <ul id="dropdown1" class="dropdown-content">
-            <% @favorites.each do |fav| %>
+            <% current_user.favorites.each do |fav| %>
               <% from_station_id = fav.from_station_id %>
               <% to_station_id = fav.to_station_id %>
               <li><a data-from-station-id="<%= from_station_id %>" data-to-station-id="<%= to_station_id %>"><%= fav.source %> to <%= fav.destination %></a></li>
