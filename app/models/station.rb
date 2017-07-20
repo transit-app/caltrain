@@ -5,18 +5,18 @@ class Station < ApplicationRecord
   geocoded_by :station_name
   after_validation :geocode
 
-  def self.get_trips (departure_stop, arrival_stop, time, range)
+  def self.get_trips (departure_station, arrival_station, time, range)
     time_after = time
-    
+
     time_before = (time_after.to_time + (range.to_i * 60 * 60)).to_time.strftime('%I:%M%p')
       if time_before.to_time < time_after.to_time
         time_before = "11:59:59PM"
       end
     @trips = []
 
-    departure_stop.trains.each do |train|
-      departure_stop_confirm = train.stops.where(station: departure_stop).where("departure_time >= '#{time_after}' and departure_time <= '#{time_before}'").first
-      arrival_stop_confirm = train.stops.where(station: arrival_stop).first
+    departure_station.trains.each do |train|
+      departure_stop_confirm = train.stops.where(station: departure_station).where("departure_time >= '#{time_after}' and departure_time <= '#{time_before}'").first
+      arrival_stop_confirm = train.stops.where(station: arrival_station).first
       if departure_stop_confirm && arrival_stop_confirm
         direction_confirm = arrival_stop_confirm[:id] > departure_stop_confirm[:id]
       end

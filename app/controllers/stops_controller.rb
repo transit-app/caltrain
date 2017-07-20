@@ -1,14 +1,14 @@
 class StopsController < ApplicationController
 
   def index
-    departure_stop = Station.where(name: params[:from]).first
-    arrival_stop = Station.where(name: params[:to]).first
+    departure_station = Station.where(name: params[:from]).first
+    arrival_station = Station.where(name: params[:to]).first
     @trip_data = {
       station_from: params[:from],
       station_to: params[:to],
-      station_from_id: departure_stop.id,
-      station_to_id: arrival_stop.id,
-      trips: Station.get_trips(departure_stop, arrival_stop, params[:time], params[:range])
+      station_from_id: departure_station.id,
+      station_to_id: arrival_station.id,
+      trips: Station.get_trips(departure_station, arrival_station, params[:time], params[:range])
     }
     if current_user
       user_id = current_user.id
