@@ -2,7 +2,7 @@
 
 This is an application which helps users to easily lookup train schedules between stations.
 
-Heroku Link: https://belle-vin-42587.herokuapp.com/
+Heroku Link: https://bayrails.herokuapp.com/
 
 ## Technologies used:
 - Rails version 5.1.2
