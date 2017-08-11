@@ -1,0 +1,25 @@
+/* line 4, /Users/younjiwoo/repositories/wdi/transit-app/app/assets/stylesheets/favorites.scss */
+.delete-btn-container {
+  margin-top: 30px;
+}
+
+/* line 7, /Users/younjiwoo/repositories/wdi/transit-app/app/assets/stylesheets/favorites.scss */
+.delete-btn {
+  background-color: #d50000;
+  margin-bottom: 30px;
+}
+
+/* line 11, /Users/younjiwoo/repositories/wdi/transit-app/app/assets/stylesheets/favorites.scss */
+.clear {
+  clear: both;
+}
+
+/* line 14, /Users/younjiwoo/repositories/wdi/transit-app/app/assets/stylesheets/favorites.scss */
+.left {
+  float: left;
+}
+
+/* line 17, /Users/younjiwoo/repositories/wdi/transit-app/app/assets/stylesheets/favorites.scss */
+.btn.waves-effect.waves-light, .waves-effect.waves-light.btn-large {
+  margin-top: 0;
+}

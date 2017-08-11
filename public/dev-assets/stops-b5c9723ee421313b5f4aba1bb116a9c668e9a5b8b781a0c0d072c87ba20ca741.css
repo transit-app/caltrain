@@ -1,0 +1,41 @@
+/* line 4, /Users/younjiwoo/repositories/wdi/transit-app/app/assets/stylesheets/stops.scss */
+.container {
+  background: #fff;
+  margin-top: 100px;
+}
+
+/* line 8, /Users/younjiwoo/repositories/wdi/transit-app/app/assets/stylesheets/stops.scss */
+div.card-content > p:first-child {
+  padding-top: 1em;
+}
+
+/* line 11, /Users/younjiwoo/repositories/wdi/transit-app/app/assets/stylesheets/stops.scss */
+div.card-content > p {
+  padding-bottom: .5em;
+}
+
+/* line 14, /Users/younjiwoo/repositories/wdi/transit-app/app/assets/stylesheets/stops.scss */
+td {
+  padding: 5px;
+}
+
+/* line 17, /Users/younjiwoo/repositories/wdi/transit-app/app/assets/stylesheets/stops.scss */
+.orange-title {
+  color: #ffab40;
+}
+
+/* line 20, /Users/younjiwoo/repositories/wdi/transit-app/app/assets/stylesheets/stops.scss */
+.btn.waves-effect.waves-light {
+  margin-top: 30px;
+  float: right;
+}
+
+/* line 24, /Users/younjiwoo/repositories/wdi/transit-app/app/assets/stylesheets/stops.scss */
+.fav-star {
+  float: right;
+}
+
+/* line 27, /Users/younjiwoo/repositories/wdi/transit-app/app/assets/stylesheets/stops.scss */
+.fav-star:hover {
+  color: #26a69a;
+}
